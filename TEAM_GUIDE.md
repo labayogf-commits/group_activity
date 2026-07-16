@@ -128,7 +128,7 @@ use App\Helpers\SidebarHelper;
 SidebarHelper::registerTab(
     'BlogSystem',             // Module Name
     'Blog Management',        // The text that will appear on the sidebar
-    route('blog.index'),      // Your route name
+    'blog.index',             // Your route name
     'bi-pencil-square'        // (Optional) Icon class
 );
 ```
