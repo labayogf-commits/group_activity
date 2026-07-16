@@ -6,12 +6,6 @@ SidebarHelper::registerTab(
     'HotelManagement',
     'Hotel Dashboard',
     'hotel.index',
-    'hotel-icon'
+    null
 );
 
-SidebarHelper::registerTab(
-    'HotelManagement',
-    'Hotel Rooms',
-    'hotel.rooms',
-    'hotel-icon'
-);
