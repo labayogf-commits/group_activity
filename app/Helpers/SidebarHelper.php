@@ -8,16 +8,18 @@ class SidebarHelper
 
     public static function registerTab($moduleName, $label, $route, $icon = null)
     {
-        self::$tabs[] = [
-            'module' => $moduleName,
-            'label' => $label,
-            'route' => $route,
-            'icon' => $icon,
-        ];
+        if (! isset(self::$tabs[$route])) {
+            self::$tabs[$route] = [
+                'module' => $moduleName,
+                'label' => $label,
+                'route' => $route,
+                'icon' => $icon,
+            ];
+        }
     }
 
     public static function getTabs()
     {
-        return self::$tabs;
+        return array_values(self::$tabs);
     }
 }

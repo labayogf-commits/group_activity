@@ -1,0 +1,57 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+
+class AppointmentController extends Controller
+{
+    public function index()
+    {
+        $totalInterviews = DB::table('interviews')->count();
+        $completedInterviews = DB::table('interviews')->where('status', 'completed')->count();
+        $completionRate = $totalInterviews > 0 ? round(($completedInterviews / $totalInterviews) * 100) . '%' : '0%';
+
+        $stats = [
+            'scheduled' => $totalInterviews,
+            'completion_rate' => $completionRate,
+            'no_show_rate' => '2%',
+            'feedback_time' => '4.2 hrs',
+        ];
+
+        $interviews = DB::table('interviews')
+            ->join('candidates', 'interviews.candidate_id', '=', 'candidates.id')
+            ->join('job_positions', 'interviews.job_position_id', '=', 'job_positions.id')
+            ->join('interview_types', 'interviews.interview_type_id', '=', 'interview_types.id')
+            ->select(
+                'interviews.*',
+                'candidates.name as candidate_name',
+                'job_positions.title as position_title',
+                'interview_types.stage_name',
+                'interview_types.color_code'
+            )
+            ->get();
+
+        $calendar = ['Mon' => [], 'Tue' => [], 'Wed' => [], 'Thu' => [], 'Fri' => []];
+
+        foreach ($interviews as $interview) {
+            $dayOfWeek = Carbon::parse($interview->start_at)->format('D');
+            if (array_key_exists($dayOfWeek, $calendar)) {
+                $calendar[$dayOfWeek][] = $interview;
+            }
+        }
+
+        $candidates = DB::table('candidates')->orderBy('name')->get();
+        $positions = DB::table('job_positions')->get();
+        $stages = DB::table('interview_types')->get();
+
+        return view('ArnoldAppointment::index', compact('stats', 'calendar', 'candidates', 'positions', 'stages'));
+    }
+
+    public function create()
+    {
+        return view('ArnoldAppointment::create');
+    }
+}

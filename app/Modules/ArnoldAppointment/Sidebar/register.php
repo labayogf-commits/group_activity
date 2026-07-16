@@ -1,17 +1,16 @@
 <?php
 
 use App\Helpers\SidebarHelper;
-
 SidebarHelper::registerTab(
-    'HotelManagement',
-    'Hotel Dashboard',
-    'hotel.index',
-    'hotel-icon'
+    'ArnoldAppointment',
+    'Appointments',
+    'arnold.appointments.index',
+    'calendar-icon'
 );
 
 SidebarHelper::registerTab(
-    'HotelManagement',
-    'Hotel Rooms',
-    'hotel.rooms',
-    'hotel-icon'
+    'ArnoldAppointment',
+    'Schedule Interview',
+    'arnold.appointments.create',
+    'calendar-plus-icon'
 );
