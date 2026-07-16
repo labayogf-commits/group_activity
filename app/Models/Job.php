@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Job extends Model
 {
+    protected $table = 'job_posts';
+
     protected $fillable = [
         'title',
         'company_name',
@@ -14,13 +16,10 @@ class Job extends Model
         'description',
         'job_type',
         'salary',
-        'apply_link'
+        'apply_link',
     ];
 
-    /**
-     * Get the user that owns the job post.
-     */
-    public function user(): BelongsTo
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
