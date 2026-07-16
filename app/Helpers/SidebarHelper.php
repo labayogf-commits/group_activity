@@ -8,6 +8,12 @@ class SidebarHelper
 
     public static function registerTab($moduleName, $label, $route, $icon = null)
     {
+        foreach (self::$tabs as $tab) {
+            if ($tab['route'] === $route) {
+                return; 
+            }
+        }
+
         self::$tabs[] = [
             'module' => $moduleName,
             'label' => $label,
