@@ -3,46 +3,47 @@
 namespace App\Modules\HotelManagement\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Modules\HotelManagement\Models\Client;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
+// Import your Client model if you are using it
+use App\Modules\HotelManagement\Models\Client; 
 
 class ClientController extends Controller
 {
-    public function index(): View
+    public function index()
     {
-        return view('HotelManagement::index', ['clients' => Client::latest()->get()]);
+        return view('HotelManagement::index', [
+            'clients' => Client::latest()->get(),
+        ]);
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
-        Client::create($this->validated($request));
+        Client::create($this->validatedClient($request));
 
-        return redirect()->route('dashboard')->with('success', 'Client added successfully.');
+        return redirect()->route('hotel.index')->with('success', 'Client added successfully.');
     }
 
-    public function update(Request $request, Client $client): RedirectResponse
+    public function update(Request $request, Client $client)
     {
-        $client->update($this->validated($request));
+        $client->update($this->validatedClient($request, $client));
 
-        return redirect()->route('dashboard')->with('success', 'Client updated successfully.');
+        return redirect()->route('hotel.index')->with('success', 'Client updated successfully.');
     }
 
-    public function destroy(Client $client): RedirectResponse
+    public function destroy(Client $client)
     {
         $client->delete();
 
-        return redirect()->route('dashboard')->with('success', 'Client removed successfully.');
+        return redirect()->route('hotel.index')->with('success', 'Client removed successfully.');
     }
 
-    private function validated(Request $request): array
+    private function validatedClient(Request $request, ?Client $client = null): array
     {
         return $request->validate([
             'first_name' => ['required', 'string', 'max:100'],
             'last_name' => ['required', 'string', 'max:100'],
             'phone' => ['required', 'string', 'max:30'],
-            'email' => ['required', 'email', 'max:255'],
+            'email' => ['required', 'email', 'max:255', 'unique:clients,email'.($client ? ','.$client->id : '')],
         ]);
     }
 }

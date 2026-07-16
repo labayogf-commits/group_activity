@@ -1,5 +1,13 @@
 <x-app-layout>
-    <main class="mx-auto grid max-w-7xl gap-6 p-6 lg:grid-cols-[360px_1fr]">
+    <x-slot name="header">
+        <h2 class="text-xl font-semibold leading-tight text-gray-800">
+            Hotel Management System
+        </h2>
+    </x-slot>
+
+    <div class="py-6">
+        <div class="mx-auto grid max-w-7xl gap-6 px-6 lg:grid-cols-[360px_1fr]">
+
         {{-- Add Client Section --}}
         <section class="h-fit rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
             <div class="mb-6 flex items-center justify-between">
@@ -61,7 +69,8 @@
                 </table>
             </div>
         </section>
-    </main>
+        </div>
+    </div>
 
     <script>
         const form = document.getElementById('client-form');
