@@ -1,12 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Modules\RomualdezStalker\Controllers\RoomController; // Matches your actual controller file name
+use App\Modules\RomualdezStalker\Controllers\RoomController;
 
 Route::group(['prefix' => 'stalker'], function () {
-    // Points to the index() function inside RoomController
     Route::get('/dashboard', [RoomController::class, 'index'])->name('stalker.index');
-    
-    // Points to the rooms() function inside RoomController (if you kept it)
-    Route::get('/analytics', [RoomController::class, 'rooms'])->name('stalker.analytics');
+    Route::post('/store', [RoomController::class, 'store'])->name('stalker.store');
+    Route::put('/{id}', [RoomController::class, 'update'])->name('stalker.update');
+    Route::delete('/{id}', [RoomController::class, 'destroy'])->name('stalker.destroy');
 });
