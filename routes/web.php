@@ -1,20 +1,12 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Modules\ChristianPagupitan\Controllers\BarberController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Change this to use barber.index explicitly
+Route::get('/barber', [BarberController::class, 'index'])->name('barber.index');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-require __DIR__.'/auth.php';
+// Keep your action routes below
+Route::post('/items', [BarberController::class, 'store'])->name('items.store');
+Route::put('/items/{id}', [BarberController::class, 'update'])->name('items.update');
+Route::delete('/items/{id}', [BarberController::class, 'destroy'])->name('items.destroy');

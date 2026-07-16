@@ -3,15 +3,8 @@
 use App\Helpers\SidebarHelper;
 
 SidebarHelper::registerTab(
-    'HotelManagement',
-    'Hotel Dashboard',
-    'hotel.index',
-    'hotel-icon'
-);
-
-SidebarHelper::registerTab(
-    'HotelManagement',
-    'Hotel Rooms',
-    'hotel.rooms',
-    'hotel-icon'
+    'ChristianPagupitan',
+    'Barber Shop Dashboard',
+    'barber.index', // Points perfectly to the route defined in Step 3
+    'bi-scissors'
 );
