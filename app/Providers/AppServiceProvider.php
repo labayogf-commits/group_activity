@@ -17,8 +17,11 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void
-    {
-        //
+public function boot(): void
+{
+    // Register your custom module views path as a fallback location
+    if (file_exists(app_path('Modules/AllenJobPosting/views'))) {
+        $this->app['view']->addLocation(app_path('Modules/AllenJobPosting/views'));
     }
+}
 }
