@@ -3,15 +3,8 @@
 use App\Helpers\SidebarHelper;
 
 SidebarHelper::registerTab(
-    'HotelManagement',
-    'Hotel Dashboard',
-    'hotel.index',
-    'hotel-icon'
-);
-
-SidebarHelper::registerTab(
-    'HotelManagement',
-    'Hotel Rooms',
-    'hotel.rooms',
-    'hotel-icon'
+    'AnthonyHSM',         // <--- DAPAT TUGMA SA PANGALAN NG FOLDER MO!
+    'Hardware Portal',    // Label sa sidebar
+    'hardware.index',     // Route name
+    'cpu-icon'            // Icon
 );
