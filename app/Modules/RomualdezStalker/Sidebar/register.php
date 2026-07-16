@@ -2,16 +2,12 @@
 
 use App\Helpers\SidebarHelper;
 
+// Syntax: SidebarHelper::registerTab('ModuleName', 'Display Label', 'route.name', 'icon-style');
 SidebarHelper::registerTab(
-    'HotelManagement',
-    'Hotel Dashboard',
-    'hotel.index',
-    'hotel-icon'
+    'RomualdezStalker', 
+    'RomualdezStalker', 
+    'stalker.index', 
+    'stalker-icon'
 );
 
-SidebarHelper::registerTab(
-    'HotelManagement',
-    'Hotel Rooms',
-    'hotel.rooms',
-    'hotel-icon'
-);
+
