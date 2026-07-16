@@ -5,7 +5,7 @@ use App\Helpers\SidebarHelper;
 SidebarHelper::registerTab(
     'MedicineInventory',
     'Medicine Inventory',
-    '/MedicineInventory::index',
+    '/medicines',
     'medicine-icon'
 );
 

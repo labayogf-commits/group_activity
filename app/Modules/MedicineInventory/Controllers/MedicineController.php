@@ -17,6 +17,8 @@ class MedicineController extends Controller
             $editingMedicine = Medicine::find($request->edit);
         }
 
+        $isAdd = $request->has('add');
+
     
         $categoryCounts = [
             'Tablet'    => Medicine::where('category', 'Tablet')->count(),
@@ -26,7 +28,7 @@ class MedicineController extends Controller
             'Injection' => Medicine::where('category', 'Injection')->count(),
         ];
 
-        return view('MedicineInventory::index', compact('medicines', 'editingMedicine', 'categoryCounts'));
+        return view('MedicineInventory::index', compact('medicines', 'editingMedicine', 'categoryCounts', 'isAdd'));
     }
 
     public function store(Request $request)
@@ -40,7 +42,7 @@ class MedicineController extends Controller
 
         Medicine::create($validated);
 
-        return redirect()->route('dashboard')->with('success', 'Medical record added successfully!');
+        return redirect()->route('medicines.index')->with('success', 'Medical record added successfully!');
     }
 
     // Update an existing medicine
@@ -55,13 +57,13 @@ class MedicineController extends Controller
 
         $medicine->update($validated);
 
-        return redirect()->route('dashboard')->with('success', 'Medical record updated successfully!');
+        return redirect()->route('medicines.index')->with('success', 'Medical record updated successfully!');
     }
 
     public function destroy(Medicine $medicine)
     {
         $medicine->delete();
 
-        return redirect()->route('dashboard')->with('success', 'Medical record deleted successfully!');
+        return redirect()->route('medicines.index')->with('success', 'Medical record deleted successfully!');
     }
 }

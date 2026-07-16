@@ -5,7 +5,13 @@ use App\Helpers\SidebarHelper;
 SidebarHelper::registerTab(
     'HotelManagement',
     'Hotel Dashboard',
-    '/dashboard',
-    null
+    'hotel.index',
+    'hotel-icon'
 );
 
+SidebarHelper::registerTab(
+    'HotelManagement',
+    'Hotel Rooms',
+    'hotel.rooms',
+    'hotel-icon'
+);

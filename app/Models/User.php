@@ -29,15 +29,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-<<<<<<< HEAD
-    public function expenses()
-    {
-    return $this->hasMany(\App\Modules\ExpensesTracker\Models\Expense::class);
-=======
 
     public function booking()
     {
     return $this->hasMany(\App\Modules\ResortBooking\Models\Booking::class);
->>>>>>> abby
     }
 }
