@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Modules\HotelManagement\Controllers\BookingController;
+use App\Modules\ResortBooking\Controllers\BookingController;
 use App\Http\Controllers\ProfileController;
-use App\Models\Room;
+use App\Modules\ResortBooking\Models\Room;
 
 
 /*
@@ -21,7 +21,9 @@ Route::get('/', function () {
 
 // Ito ang dating "Route [public.book] not defined" na error — nadagdag na ngayon
 Route::post('/book', [PublicBookingController::class, 'store'])->name('public.book');
-
+Route::get('/index', [BookingController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('index');
 /*
 |--------------------------------------------------------------------------
 | Dashboard
@@ -51,10 +53,6 @@ Route::middleware('auth')->group(function () {
         'index', 'store', 'update', 'destroy',
     ]);
 
-    // TODO: idagdag pa natin ito kapag ginawa na natin ang Rooms/Client/Calendar modules
-    // Route::resource('rooms', RoomController::class)->only(['index', 'store', 'update', 'destroy']);
-    // Route::resource('clients', ClientController::class)->only(['index', 'store', 'update', 'destroy']);
-    // Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar.index');
 });
 
 require base_path('routes/auth.php');

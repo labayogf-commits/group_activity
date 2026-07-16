@@ -29,4 +29,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function booking()
+    {
+    return $this->hasMany(\App\Modules\ResortBooking\Models\Booking::class);
+    }
 }

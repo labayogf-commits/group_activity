@@ -2,10 +2,11 @@
 
 namespace App\Modules\ResortBooking\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Booking;
-use App\Models\Client;
-use App\Models\Room;
+
+use Illuminate\Routing\Controller; 
+use App\Modules\ResortBooking\Models\Booking;
+use App\Modules\ResortBooking\Models\Client;
+use App\Modules\ResortBooking\Models\Room;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -20,7 +21,7 @@ class BookingController extends Controller
         // ang Client sa halip na dropdown)
         $rooms = Room::orderBy('room_number')->get();
 
-        return view('bookings.index', compact('bookings', 'rooms'));
+        return view('ResortBooking::index', compact('bookings', 'rooms'));
     }
 
     /**

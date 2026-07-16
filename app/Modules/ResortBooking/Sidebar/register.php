@@ -5,7 +5,7 @@ use App\Helpers\SidebarHelper;
 SidebarHelper::registerTab(
     'ResortBooking',
     'Resort Dashboard',
-    '/public.book',
+    '/index',
     null
 );
 

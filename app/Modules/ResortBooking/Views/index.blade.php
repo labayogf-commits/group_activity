@@ -94,7 +94,7 @@
                         </div>
                     @endif
 
-                    @include('bookings._modal_fields', [
+                    @include('ResortBooking::_modal_feilds', [
                         'prefix'  => 'add_',
                         'rooms'   => $rooms,
                         'booking' => null,
@@ -131,7 +131,7 @@
                             </div>
                         @endif
 
-                        @include('bookings._modal_fields', [
+                        @include('ResortBooking::_modal_feilds', [
                             'prefix'  => 'edit_' . $booking->id . '_',
                             'rooms'   => $rooms,
                             'booking' => $booking,
