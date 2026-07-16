@@ -14,12 +14,11 @@ class AppServiceProvider extends ServiceProvider
         //
     }
 
+    /**
+     * Bootstrap any application services.
+     */
     public function boot(): void
     {
-<<<<<<< HEAD
-    $this->loadViewsFrom(base_path('app/Modules/ExpensesTracker/Views'), 'expenses');
-=======
-    $this->loadViewsFrom(base_path('app/Modules/ResortBooking/Views'), 'booking');
->>>>>>> abby
+        $this->loadViewsFrom(base_path('app/Modules/ResortBooking/Views'), 'booking');
     }
 }
