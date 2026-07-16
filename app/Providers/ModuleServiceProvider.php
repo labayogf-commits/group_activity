@@ -17,29 +17,30 @@ class ModuleServiceProvider extends ServiceProvider
     {
         $modulesPath = app_path('Modules');
 
-        if (File::exists($modulesPath)) {
-            $modules = File::directories($modulesPath);
+        if (! File::exists($modulesPath)) {
+            return;
+        }
 
-            foreach ($modules as $module) {
-                // Load Routes
-                $routePath = $module . '/Routes/web.php';
-                if (File::exists($routePath)) {
-                    Route::middleware('web')
-                        ->group($routePath);
-                }
+        $modules = File::directories($modulesPath);
 
-                // Load Views
-                $viewsPath = $module . '/Views';
-                if (File::exists($viewsPath)) {
-                    $moduleName = basename($module);
-                    $this->loadViewsFrom($viewsPath, $moduleName);
-                }
+        foreach ($modules as $module) {
+            $sidebarPath = $module . '/Sidebar/register.php';
+            if (File::exists($sidebarPath)) {
+                require $sidebarPath;
+            }
+        }
 
-                // Load Sidebar Registration
-                $sidebarPath = $module . '/Sidebar/register.php';
-                if (File::exists($sidebarPath)) {
-                    require $sidebarPath;
-                }
+        foreach ($modules as $module) {
+            $routePath = $module . '/Routes/web.php';
+            if (File::exists($routePath)) {
+                Route::middleware('web')
+                    ->group($routePath);
+            }
+
+            $viewsPath = $module . '/Views';
+            if (File::exists($viewsPath)) {
+                $moduleName = basename($module);
+                $this->loadViewsFrom($viewsPath, $moduleName);
             }
         }
     }
