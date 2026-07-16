@@ -16,6 +16,10 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+<<<<<<< HEAD
     $this->loadViewsFrom(base_path('app/Modules/ExpensesTracker/Views'), 'expenses');
+=======
+    $this->loadViewsFrom(base_path('app/Modules/ResortBooking/Views'), 'booking');
+>>>>>>> abby
     }
 }
