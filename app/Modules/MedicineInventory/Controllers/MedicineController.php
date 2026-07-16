@@ -3,7 +3,7 @@
 namespace App\Modules\MedicineInventory\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Medicine;
+use App\Modules\MedicineInventory\Models\Medicine;
 use Illuminate\Http\Request;
 
 class MedicineController extends Controller
@@ -26,7 +26,7 @@ class MedicineController extends Controller
             'Injection' => Medicine::where('category', 'Injection')->count(),
         ];
 
-        return view('dashboard', compact('medicines', 'editingMedicine', 'categoryCounts'));
+        return view('MedicineInventory::index', compact('medicines', 'editingMedicine', 'categoryCounts'));
     }
 
     public function store(Request $request)

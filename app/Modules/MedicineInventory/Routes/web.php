@@ -9,7 +9,7 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', [MedicineController::class, 'index'])->name('dashboard');
+    Route::get('/medicine-inventory', [MedicineController::class, 'index'])->name('dashboard');
     Route::resource('medicines', MedicineController::class)->except(['index', 'show']);
 });
 

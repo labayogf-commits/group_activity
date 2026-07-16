@@ -25,7 +25,7 @@
                 <!-- Tablet Card -->
                 <div @click="selectedCategory = (selectedCategory === 'Tablet' ? '' : 'Tablet')" 
                      :class="selectedCategory === 'Tablet' ? 'ring-2 ring-indigo-500 bg-indigo-50/10 dark:bg-indigo-950/10' : ''"
-                     class="w-full sm:w-64 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 flex flex-col justify-between cursor-pointer hover:shadow transition-all duration-200">
+                     class="w-full sm:w-40 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 flex flex-col justify-between cursor-pointer hover:shadow transition-all duration-200">
                     <div>
                         <span class="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider block mb-2">Tablets</span>
                         <div class="text-4xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
@@ -40,7 +40,7 @@
                 <!-- Capsule Card -->
                 <div @click="selectedCategory = (selectedCategory === 'Capsule' ? '' : 'Capsule')"
                      :class="selectedCategory === 'Capsule' ? 'ring-2 ring-indigo-500 bg-indigo-50/10 dark:bg-indigo-950/10' : ''"
-                     class="w-full sm:w-64 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 flex flex-col justify-between cursor-pointer hover:shadow transition-all duration-200">
+                     class="w-full sm:w-40 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 flex flex-col justify-between cursor-pointer hover:shadow transition-all duration-200">
                     <div>
                         <span class="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider block mb-2">Capsules</span>
                         <div class="text-4xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
@@ -55,7 +55,7 @@
                 <!-- Syrup Card -->
                 <div @click="selectedCategory = (selectedCategory === 'Syrup' ? '' : 'Syrup')"
                      :class="selectedCategory === 'Syrup' ? 'ring-2 ring-indigo-500 bg-indigo-50/10 dark:bg-indigo-950/10' : ''"
-                     class="w-full sm:w-64 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 flex flex-col justify-between cursor-pointer hover:shadow transition-all duration-200">
+                     class="w-full sm:w-40 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 flex flex-col justify-between cursor-pointer hover:shadow transition-all duration-200">
                     <div>
                         <span class="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider block mb-2">Syrups</span>
                         <div class="text-4xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
@@ -70,7 +70,7 @@
                 <!-- Ointment Card -->
                 <div @click="selectedCategory = (selectedCategory === 'Ointment' ? '' : 'Ointment')"
                      :class="selectedCategory === 'Ointment' ? 'ring-2 ring-indigo-500 bg-indigo-50/10 dark:bg-indigo-950/10' : ''"
-                     class="w-full sm:w-64 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 flex flex-col justify-between cursor-pointer hover:shadow transition-all duration-200">
+                     class="w-full sm:w-40 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 flex flex-col justify-between cursor-pointer hover:shadow transition-all duration-200">
                     <div>
                         <span class="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider block mb-2">Ointments</span>
                         <div class="text-4xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
@@ -85,7 +85,7 @@
                 <!-- Injection Card -->
                 <div @click="selectedCategory = (selectedCategory === 'Injection' ? '' : 'Injection')"
                      :class="selectedCategory === 'Injection' ? 'ring-2 ring-indigo-500 bg-indigo-50/10 dark:bg-indigo-950/10' : ''"
-                     class="w-full sm:w-64 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 flex flex-col justify-between cursor-pointer hover:shadow transition-all duration-200">
+                     class="w-full sm:w-40 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 flex flex-col justify-between cursor-pointer hover:shadow transition-all duration-200">
                     <div>
                         <span class="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider block mb-2">Injections</span>
                         <div class="text-4xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
