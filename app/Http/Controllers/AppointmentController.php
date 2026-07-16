@@ -47,6 +47,8 @@ class AppointmentController extends Controller
         $positions = DB::table('job_positions')->get();
         $stages = DB::table('interview_types')->get();
 
+        // Render the ArnoldAppointment module's index view so navigating to
+        // /arnold/appointments shows the module's own dashboard.
         return view('ArnoldAppointment::index', compact('stats', 'calendar', 'candidates', 'positions', 'stages'));
     }
 

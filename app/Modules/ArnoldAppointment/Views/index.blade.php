@@ -1,10 +1,15 @@
 
 <x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">Appointments</h2>
+    </x-slot>
+
     <div class="flex min-h-screen bg-slate-50 font-sans" 
          x-data="{ 
             openModal: false, 
             isEditing: false,
             showAddCandidate: false,
+            isSidebarMinimized: false,
             actionUrl: '{{ route('interviews.store') }}',
             
             // Form Bindings
@@ -49,42 +54,54 @@
          }">
         
         <!-- SIDEBAR (Left Navigation) -->
-        <aside class="w-64 bg-white border-r border-slate-200 flex flex-col justify-between hidden md:flex p-6">
+        <aside :class="isSidebarMinimized ? 'w-16' : 'w-64'" class="bg-white border-r border-slate-200 flex flex-col justify-between hidden md:flex transition-all duration-300 overflow-hidden">
             <div class="space-y-6">
+                <div class="flex items-center justify-between px-4">
+                    <span x-show="!isSidebarMinimized" class="text-sm font-semibold text-slate-700">Menu</span>
+                    <button @click="isSidebarMinimized = !isSidebarMinimized" class="text-slate-500 hover:text-slate-800 rounded-lg p-2">
+                        <span x-text="isSidebarMinimized ? '>' : '<'"></span>
+                    </button>
+                </div>
+
                 <!-- Navigation Links -->
-                <nav class="space-y-6">
+                <nav class="space-y-6 px-4" :class="isSidebarMinimized ? 'px-2' : 'px-4'">
                     <div>
-                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Recruitment Pipeline</span>
+                        <div x-show="!isSidebarMinimized" class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Recruitment Pipeline</div>
                         <div class="mt-2 space-y-1">
-                            <a href="#" class="flex items-center px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-xl">
-                                <span class="mr-3">📊</span> Dashboard Overview
+                            <a href="#" :class="isSidebarMinimized ? 'justify-center px-2 py-3' : 'flex items-center px-4 py-2'" class="flex text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-xl transition-all duration-200">
+                                <span :class="isSidebarMinimized ? 'text-lg' : 'mr-3'">📊</span>
+                                <span x-show="!isSidebarMinimized">Dashboard Overview</span>
                             </a>
-                            <a href="#" class="flex items-center px-4 py-2 text-sm font-medium text-indigo-600 bg-indigo-50 rounded-xl">
-                                <span class="mr-3">📅</span> Interview Schedule
+                            <a href="#" :class="isSidebarMinimized ? 'justify-center px-2 py-3' : 'flex items-center px-4 py-2'" class="flex text-sm font-medium text-indigo-600 bg-indigo-50 rounded-xl transition-all duration-200">
+                                <span :class="isSidebarMinimized ? 'text-lg' : 'mr-3'">📅</span>
+                                <span x-show="!isSidebarMinimized">Interview Schedule</span>
                             </a>
-                            <a href="#" class="flex items-center px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-xl">
-                                <span class="mr-3">👥</span> Active Candidates
+                            <a href="#" :class="isSidebarMinimized ? 'justify-center px-2 py-3' : 'flex items-center px-4 py-2'" class="flex text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-xl transition-all duration-200">
+                                <span :class="isSidebarMinimized ? 'text-lg' : 'mr-3'">👥</span>
+                                <span x-show="!isSidebarMinimized">Active Candidates</span>
                             </a>
                         </div>
                     </div>
 
                     <div>
-                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Job Management</span>
+                        <div x-show="!isSidebarMinimized" class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Job Management</div>
                         <div class="mt-2 space-y-1">
-                            <a href="#" class="flex items-center px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-xl">
-                                <span class="mr-3">💼</span> Job Openings
+                            <a href="#" :class="isSidebarMinimized ? 'justify-center px-2 py-3' : 'flex items-center px-4 py-2'" class="flex text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-xl transition-all duration-200">
+                                <span :class="isSidebarMinimized ? 'text-lg' : 'mr-3'">💼</span>
+                                <span x-show="!isSidebarMinimized">Job Openings</span>
                             </a>
-                            <a href="#" class="flex items-center px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-xl">
-                                <span class="mr-3">🛡️</span> Interviewers Panel
+                            <a href="#" :class="isSidebarMinimized ? 'justify-center px-2 py-3' : 'flex items-center px-4 py-2'" class="flex text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-xl transition-all duration-200">
+                                <span :class="isSidebarMinimized ? 'text-lg' : 'mr-3'">🛡️</span>
+                                <span x-show="!isSidebarMinimized">Interviewers Panel</span>
                             </a>
                         </div>
                     </div>
                 </nav>
             </div>
             
-            <div class="pt-6 border-t border-slate-200 flex justify-between text-xs text-slate-400">
-                <button class="hover:text-slate-800">⚙️ Settings</button>
-                <button class="hover:text-slate-800">📄 Export</button>
+            <div class="pt-6 border-t border-slate-200 flex justify-between text-xs text-slate-400 px-4">
+                <button x-show="!isSidebarMinimized" class="hover:text-slate-800">⚙️ Settings</button>
+                <button x-show="!isSidebarMinimized" class="hover:text-slate-800">📄 Export</button>
             </div>
         </aside>
 
@@ -235,9 +252,11 @@
                         <div x-show="!showAddCandidate">
                             <select name="candidate_id" x-model="candidateId" :required="!showAddCandidate" class="w-full p-2.5 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-indigo-500 focus:outline-none">
                                 <option value="">Select Candidate...</option>
-                                @foreach ($candidates as $candidate)
-                                    <option value="{{ $candidate->id }}">{{ $candidate->name }} (GitHub: @{{ $candidate->github_handle }})</option>
-                                @endforeach
+                                @forelse ($candidates as $candidate)
+                                    <option value="{{ $candidate->id }}">{{ $candidate->name }} (GitHub: {{ $candidate->github_handle }})</option>
+                                @empty
+                                    <option value="" disabled>No candidates available. Use + Quick Add New.</option>
+                                @endforelse
                             </select>
                         </div>
 
@@ -264,9 +283,11 @@
                         <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">Target Job Opening</label>
                         <select name="job_position_id" x-model="jobPositionId" required class="mt-1 w-full p-2.5 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-indigo-500 focus:outline-none">
                             <option value="">Select Job Position...</option>
-                            @foreach ($positions as $position)
+                            @forelse ($positions as $position)
                                 <option value="{{ $position->id }}">{{ $position->title }}</option>
-                            @endforeach
+                            @empty
+                                <option value="" disabled>No positions available.</option>
+                            @endforelse
                         </select>
                     </div>
 
@@ -274,9 +295,11 @@
                         <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">Interview Stage</label>
                         <select name="interview_type_id" x-model="interviewTypeId" required class="mt-1 w-full p-2.5 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-indigo-500 focus:outline-none">
                             <option value="">Select Stage...</option>
-                            @foreach ($stages as $stage)
+                            @forelse ($stages as $stage)
                                 <option value="{{ $stage->id }}">{{ $stage->stage_name }}</option>
-                            @endforeach
+                            @empty
+                                <option value="" disabled>No stages available.</option>
+                            @endforelse
                         </select>
                     </div>
 
