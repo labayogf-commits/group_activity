@@ -3,7 +3,7 @@
         <div class="flex items-center justify-between w-full">
             <!-- Left Side: Title -->
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Employer Dashboard') }}
+                {{ __('Employer Dashboard (Allen Gabriel S. Gaspar)') }}
             </h2>
             
             <!-- Right Side: Navigation Buttons -->
